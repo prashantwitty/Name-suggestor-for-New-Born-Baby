@@ -11,14 +11,15 @@ string = '''enter origin:
 gender,origin = input('enter gender : \n 1.m for male \n 2.f for female\n'), input(string) 
 category = dict_gender[gender] + dict_origin[origin] #generating the column name of the dataset as per user choice
 
-starting_alpha = input('Enter the first letter of your child\'s name\n')
+initials = input('Enter the initial letter/s of your child\'s name\n')
+wcount=int(len(initials))
 required_suggestions = int(input('How much suggestion you want?\n'))
 
 names = [] #for storing the required names
 count = 0 #intializing the counter to keep track of suggestion no.s
 
-for name in dataset[category]: #radeing names from dataset onebyone
-    if name[0] == starting_alpha: #matching the first character of name of user's choice
+for name in dataset[category]: #reading names from dataset onebyone
+    if name[:wcount] == initials: #matching the initials of name of user's choice
         names.append(name)
         count+=1
     if count == required_suggestions:
